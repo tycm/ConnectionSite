@@ -19,13 +19,11 @@ router.get('/savedConnections', function(req, res){
 });
 router.get('/connection', function(req, res){
 	if(Object.keys(req.query).length === 0){
-		res.render('connections', {events: getConnections()});
+		res.render('connections');
 	}else{
 		var connection = getConnection(req.query.id);
-		res.render('connection', {student:req.query})
+		res.render('connection', {connection: connection})
 	}
-
-	res.render('connection',{connection: connection});
 });
 router.get('/about', function(req, res){
 	res.render('about');
