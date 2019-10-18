@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="EN">
+
+<head>
+	<title>Gnome Fitness</title>
+	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
+	<script src="site.js"></script>
+</head>
+
+<body>
+	<% include partials/header.ejs %>
+	<% include partials/navigation.ejs %>
+	<main>
+		<h3>Contact</h3>
+		<p>Timothy McCrickard 801027829 tmccrick@uncc.edu</p>
+
+		<h3>Contact Us</h3>
+		<form id="contact-form" method="POST">
+				<div>
+					<label for="who">Your Name</label>
+					<input type="text" name="who" id="who">
+				</div>
+				<div>
+					<label for="email">Your email</label>
+					<input type="email" name="email" id="email"/>
+				</div>
+				<div>
+					<label for="textarea">Message</label>
+					<textarea id="textarea" name="textarea"></textarea>
+				</div>
+				<input type="button" value="submit"/>
+			</form>
+	</main>
+
+	<% include partials/footer.ejs %>
+
+</body>
+
+</html>

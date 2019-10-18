@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="EN">
+
+<head>
+	<title>Gnome Fitness</title>
+	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
+	<script src="site.js"></script>
+</head>
+
+<body>
+	<% include partials/header.ejs %>
+	<% include partials/navigation.ejs %>
+	<main>
+		<form id="newconnection" method="POST">
+				<div>
+					<label for="topic">Topic</label>
+					<input type="text" name="topic" id="topic">
+				</div>
+				<div>
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name"/>
+				</div>
+				<div>
+					<label for="textarea">Details</label>
+					<textarea id="textarea" name="textarea"></textarea>
+				</div>
+				<div>
+					<label for="where">Where</label>
+					<input type="text" name="where" id="where"/>
+				</div>
+				<div>
+					<label for="when">When</label>
+					<input type="date" name="when" id="when"/>
+				</div>
+				<input type="submit" value="Create Connection" />
+			</form>
+	</main>
+
+	<% include partials/footer.ejs %>
+
+</body>
+
+</html>
