@@ -12,24 +12,18 @@
 	<% include partials/header.ejs %>
 	<% include partials/navigation.ejs %>
 	<main>
-		<h2>Cardio</h2>
-		<ul>
-			<% events.forEach(function(item){ %>
-				<% if(item.category == "Cardio"){ %>
-					<% var link = "connection" + "?id=" + item.ID %>
-					<li><a href="<%= link %>"><%= item.name %></a></li>
-				<% } %> 
-			<%	}) %>
-		</ul>
-		<h2>Weightlifting</h2>
-		<ul>
-			<% events.forEach(function(item){ %>
-				<% if(item.category == "WeightLifting"){ %>
-					<% var link = "connection" + "?id=" + item.ID %>
-					<li><a href="<%= link %>"><%= item.name %></a></li>
-				<% } %> 
-			<%	}) %>
-		</ul>
+		<% categories.forEach(function(cat){ %>
+			<h2><%= cat %></h2>
+				<ul>
+					<% events.forEach(function(item){ %>
+						<% if(item.category == cat){ %>
+							<% var link = "connection" + "?id=" + item.ID %>
+							<li><a href="<%= link %>"><%= item.name %></a></li>
+						<% } %> 
+					<%	}) %>
+				</ul>
+		<% }) %>
+		
 	</main>
 
 	<% include partials/footer.ejs %>

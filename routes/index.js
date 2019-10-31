@@ -2,6 +2,7 @@ var express = require('express');
 var connectionModel = require('../models/connectionDB.js');
 var getConnections = connectionModel.getConnections;
 var getConnection = connectionModel.getConnection;
+var getCategories = connectionModel.getCategories;
 
 var router = express.Router();
 
@@ -12,10 +13,10 @@ router.get('/index', function(req, res){
 	res.render('index');
 });
 router.get('/connections', function(req, res){
-	res.render('connections', {events: getConnections()});
+	res.render('connections', {events: getConnections(), categories: getCategories()});
 });
 router.get('/savedConnections', function(req, res){
-	res.render('savedConnections', {events: getConnections()});
+	res.render('savedConnections', {events: getConnections(), categories: getCategories()});
 });
 router.get('/connection', function(req, res){
 	if(Object.keys(req.query).length === 0){

@@ -30,12 +30,14 @@ var getConnection = function (id) {
 	})
 	return toreturn;
 };
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
 var getCategories = function() {
 	var categories = [];
 	events.forEach(element => {
-		if(!events.contains(element.category)){
-			events.push(element.category)
-		}
+		categories.push(element.category)
+		categories = categories.filter(onlyUnique);
 	});
 	return categories;
 }
