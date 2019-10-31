@@ -30,6 +30,16 @@ var getConnection = function (id) {
 	})
 	return toreturn;
 };
+var getCategories = function() {
+	var categories = [];
+	events.forEach(element => {
+		if(!events.contains(element.category)){
+			events.push(element.category)
+		}
+	});
+	return categories;
+}
 
 module.exports.getConnections = getConnections;
 module.exports.getConnection = getConnection;
+module.exports.getCategories = getCategories;
