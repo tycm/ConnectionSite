@@ -25,11 +25,10 @@
 					<td><%= item.category %></td>
 					<td>No</td>
 					<td>
-					<% var link = "/connection" + "?id=" + item.ID %>
-					<form action="<%= link %>" method="get" target="<%= item.id %>">
+					<form action="/connection?01" method="get" target="<%= item.id %>">
 							<button type="submit">Update</button>
 					</form>
-					<form action="savedConnections" method="get" target="_blank">
+					<form action="/savedConnections" method="get">
 							<button type="submit">Delete</button>
 					</form>
 					</td>

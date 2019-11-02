@@ -1,8 +1,5 @@
 var express = require('express');
-var connectionModel = require('../models/connectionDB.js');
-var getConnections = connectionModel.getConnections;
-var getConnection = connectionModel.getConnection;
-var getCategories = connectionModel.getCategories;
+var connectionDB = require('../util/connectionDB.js');
 
 var router = express.Router();
 
@@ -10,38 +7,26 @@ router.get('/', function(req, res){
 	res.render('index');
 });
 router.get('/index', function(req, res){
-	res.render('index');
+	res.render('index', {user: req.session.user});
 });
 router.get('/connections', function(req, res){
-	res.render('connections', {events: getConnections(), categories: getCategories()});
-});
-router.get('/savedConnections', function(req, res){
-	res.render('savedConnections', {events: getConnections(), categories: getCategories()});
+	res.render('connections', {events: connectionDB.getConnections(), categories: connectionDB.getCategories(), user: req.session.user});
 });
 router.get('/connection', function(req, res){
 	if(Object.keys(req.query).length === 0){
-		res.render('connections');
+		res.render('connections', {categories: connectionDB.getCategories(), user: req.session.user});
 	}else{
-		var connection = getConnection(req.query.id);
-		res.render('connection', {connection: connection})
+		res.render('connection', {connection: connectionDB.getConnection(req.query.id), user: req.session.user})
 	}
 });
 router.get('/about', function(req, res){
-	res.render('about');
+	res.render('about', {user: req.session.user});
 });
 router.get('/contact', function(req, res){
-	res.render('contact');
-});
-router.get('/newconnection', function(req, res){
-	res.render('newconnection');
-});
-router.post('/newconnection', function(req, res){
-	res.render('newconnection',{connection: req.query});
+	res.render('contact', {user: req.session.user});
 });
 
-router.get('/*', function(req, res){
-	res.send('404 Page not found');
-});
+
 
 
 

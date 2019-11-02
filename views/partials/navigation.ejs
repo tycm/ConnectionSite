@@ -4,5 +4,8 @@
 		<li><a href="connections">Connections</a></li>
 		<li><a href="about">About</a></li>
 		<li><a href="contact">Contact</a></li>
+		<% if(typeof user != 'undefined'){ %>
+		<li class="user">Welcome, <%= user.firstName %></li>
+		<% } %>
 	</ul>
 </div>

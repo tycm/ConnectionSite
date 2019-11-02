@@ -139,6 +139,9 @@ main {
     margin-right: auto;
     margin-left: auto;
 }
+.user li {
+    float: right;
+}
 
 ul li a{
     color: #ffffff;

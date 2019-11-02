@@ -1,6 +1,12 @@
-var connection = function(i, n, t, d, c, h, w){
-	var connectionModel = {ID: i, name: n, topic: t, date: d, category: c, host: h, where: w};
-	return connectionModel;
-};
-
-module.exports.connection = connection;
+class Connection{
+	constructor(id, name, topic, date, cat, host, where){
+		this.ID = id;
+		this.name = name;
+		this.topic = topic;
+		this.date = date;
+		this.category = cat;
+		this.host = host;
+		this.where = where;
+	}
+}
+module.exports = Connection;
