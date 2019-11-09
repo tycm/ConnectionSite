@@ -1,4 +1,3 @@
-var UserProfile = require('./UserProfile.js')
 class User{
 	constructor(id, firstName, lastName, email, address1, address2, city, state, zip, country){
 		this.id = id;
@@ -11,7 +10,6 @@ class User{
 		this.state = state;
 		this.zip = zip;
 		this.country = country;
-		this.profile = new UserProfile(id);
 	};
 };
 

@@ -12,6 +12,7 @@
 		<% include partials/header.ejs %>
 		<% include partials/navigation.ejs %>
 	<main>
+		<% if(typeof events != 'undefined') {%> 
 		<table>
 			<tr>
 				<th>Connection</th>
@@ -19,22 +20,27 @@
 				<th>Going</th>
 				<th></th>
 			</tr>
-			<% events.forEach(function(item){ %>
-				<tr>
-					<td><%= item.name %></td>
-					<td><%= item.category %></td>
-					<td>No</td>
-					<td>
-					<form action="/connection?01" method="get" target="<%= item.id %>">
-							<button type="submit">Update</button>
-					</form>
-					<form action="/savedConnections" method="get">
-							<button type="submit">Delete</button>
-					</form>
-					</td>
-				</tr>
-			<% }); %>
+				<% events.forEach(function(item){ %>
+					<tr>
+						<td><%= item.connection.name %></td>
+						<td><%= item.connection.category %></td>
+						<td><%= item.rsvp %> </td>
+						<td>
+						<% var link = "/connection?id=" + item.connection.ID %>
+						<form action="<%=link%>" method="Post">
+								<button type="submit">Update</button>
+						</form>
+						<% var dellink = "/delete?connectionID=" + item.connection.ID %>
+						<form action="<%=dellink%>" method="POST">
+								<button type="submit">Delete</button>
+						</form>
+						</td>
+					</tr>
+				<% }); %>
 		</table>
+		<%} else {%>
+			<h2>You have no saved connections</h2>
+			<% } %>
 	</main>
 
 	<% include partials/footer.ejs %>
