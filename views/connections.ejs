@@ -17,7 +17,7 @@
 			<ul>
 				<% events.forEach(function(item){ %>
 					<% if(item.category == cat){ %>
-						<% var link = "connection" + "?id=" + item.ID %>
+						<% var link = "connection" + "?id=" + item.id %>
 						<li><a href="<%= link %>"><%= item.name %></a></li>
 					<% } %>
 				<%	}) %>

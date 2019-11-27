@@ -1,5 +1,7 @@
 var express = require('express');
 var session = require('express-session');
+var mongoose = require('mongoose');
+var createDB = require('./createDB.js')
 
 var app = express();
 var router = express.Router();
@@ -15,8 +17,10 @@ app.use(session({
 
 var index = require('./routes/index.js');
 var ProfileController = require('./controllers/ProfileController.js')
+var ConnectionController = require('./controllers/ConnectionController.js')
 app.use('/', index);
 app.use('/', ProfileController);
+app.use('/', ConnectionController);
 app.get('/*', function(req,res){
 	res.send("404 Not found");
 })

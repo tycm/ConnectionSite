@@ -1,0 +1,37 @@
+The easiest way I have found to create the database is through the javascript. 
+
+To create the database and populate all of the neccecary fields there is a file called createDB.js To enable this file please uncomment line 4 in app.js and run the application. Then before running it again comment line 4 in app.js to make sure there are no duplicate entries. 
+
+
+-----------------------------------
+To prevent duplicate entries please comment out line 4 in app.js
+-----------------------------------
+
+
+if you would prefer here is the JSON from mongoexport
+
+Database: Connections
+	Collection: connections
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd85"},"id":"1","name":"Gnome 5K","topic":"Running together","date":{"$date":"2019-11-12T10:00:00Z"},"category":"Cardio","host":"2","where":"9201 University City BLVD","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd86"},"id":"2","name":"Gnome Marathon","topic":"Running marathons together","date":{"$date":"2019-12-12T10:00:00Z"},"category":"Cardio","host":"2","where":"1234 South Main St.","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd87"},"id":"3","name":"Gnome Sprint","topic":"Sprinting together","date":{"$date":"2019-10-03T09:00:00Z"},"category":"Cardio","host":"1","where":"1294 Tryon Street","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd88"},"id":"4","name":"Gnome Squats","topic":"Squatting together","date":{"$date":"2019-12-04T10:00:00Z"},"category":"WeightLifting","host":"1","where":"1284 Northbend Dr.","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd89"},"id":"5","name":"Gnome Bench","topic":"Benching marathons together","date":{"$date":"2019-10-12T09:00:00Z"},"category":"WeightLifting","host":"1","where":"1286 University City Blvd.","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd8a"},"id":"6","name":"Gnome Lifts","topic":"Lifting together","date":{"$date":"2020-01-11T10:00:00Z"},"category":"WeightLifting","host":"2","where":"1235 Luke Road","__v":0}
+		{"_id":{"$oid":"5dde746c50d7803da2682a31"},"id":"1556","name":"Testing","topic":"Test meetup","date":{"$date":"2019-12-25T00:00:00Z"},"category":"Test Category","host":"1","__v":0}
+	Collection: userconnections
+		{"_id":{"$oid":"5dde740b50d7803da2682a27"},"userID":2,"connectionID":3,"rsvp":"Yes","__v":0}
+		{"_id":{"$oid":"5dde740f50d7803da2682a28"},"userID":2,"connectionID":6,"rsvp":"Maybe","__v":0}
+		{"_id":{"$oid":"5dde741450d7803da2682a29"},"userID":2,"connectionID":5,"rsvp":"Yes","__v":0}
+		{"_id":{"$oid":"5dde741950d7803da2682a2a"},"userID":2,"connectionID":1,"rsvp":"No","__v":0}
+		{"_id":{"$oid":"5dde743d50d7803da2682a2b"},"userID":1,"connectionID":3,"rsvp":"Maybe","__v":0}
+		{"_id":{"$oid":"5dde744050d7803da2682a2c"},"userID":1,"connectionID":2,"rsvp":"No","__v":0}
+		{"_id":{"$oid":"5dde744350d7803da2682a2d"},"userID":1,"connectionID":1,"rsvp":"Maybe","__v":0}
+		{"_id":{"$oid":"5dde744650d7803da2682a2e"},"userID":1,"connectionID":4,"rsvp":"Yes","__v":0}
+		{"_id":{"$oid":"5dde744950d7803da2682a2f"},"userID":1,"connectionID":5,"rsvp":"Yes","__v":0}
+		{"_id":{"$oid":"5dde744e50d7803da2682a30"},"userID":1,"connectionID":6,"rsvp":"Maybe","__v":0}
+		{"_id":{"$oid":"5dde747150d7803da2682a32"},"userID":1,"connectionID":1556,"rsvp":"No","__v":0}
+	Collection: users 
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd8b"},"id":"1","firstName":"Tim","lastName":"McCrickard","email":"tmccrick@uncc.edu","address1":"9201 University City BLVD","address2":"Wallis Hall","city":"Charlotte","state":"NC","zip":"28223","country":"US","__v":0}
+		{"_id":{"$oid":"5dde722e9a881d3cd779bd8c"},"id":"2","firstName":"Gnome","lastName":"Man","email":"gman@uncc.edu","address1":"9201 University City BLVD","address2":"Student Union","city":"Charlotte","state":"NC","zip":"28223","country":"US","__v":0}
+

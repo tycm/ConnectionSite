@@ -14,15 +14,15 @@
 		<div class="center">
 				<h2><%= connection.name %></h2>
 				<img class="profile" src="/assets/images/gnome.jpg" alt="Gnome man">
-				<p>Hosted by <%= connection.host %></p>
+				<p>Hosted by <%= host %></p>
 				<p><%= connection.date %></p>
 				<p><%= connection.where %></p>
 				<h3>Details</h3>
 				<p><%= connection.topic %></p>
 				<h3>RSVP</h3>
-				<% var yes = "savedConnections?connectionID=" + connection.ID + "&response=Yes"%> 
-				<% var no = "savedConnections?connectionID=" + connection.ID + "&response=No"%> 
-				<% var maybe = "savedConnections?connectionID=" + connection.ID + "&response=Maybe"%> 
+				<% var yes = "savedConnections?connectionID=" + connection.id + "&response=Yes"%> 
+				<% var no = "savedConnections?connectionID=" + connection.id + "&response=No"%> 
+				<% var maybe = "savedConnections?connectionID=" + connection.id + "&response=Maybe"%> 
 				<form action="<%=yes%>" method="POST">
 					<input type="submit" value="Yes"></input>
 				</form>

@@ -1,16 +1,19 @@
-class User{
-	constructor(id, firstName, lastName, email, address1, address2, city, state, zip, country){
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.country = country;
-	};
-};
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/Connections', {useNewUrlParser: true, useUnifiedTopology: true});
+
+var userSchema = new mongoose.Schema({
+	id: {type: String, required: true},
+	firstName: {type: String, required: true},
+	lastName: {type: String, required: true},
+	email: String,
+	address1: String,
+	address2: String,
+	city: String,
+	state: String,
+	zip: String,
+	country: String
+});
+
+var User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -22,15 +22,15 @@
 			</tr>
 				<% events.forEach(function(item){ %>
 					<tr>
-						<td><%= item.connection.name %></td>
-						<td><%= item.connection.category %></td>
+						<td><%= item.name %></td>
+						<td><%= item.category %></td>
 						<td><%= item.rsvp %> </td>
 						<td>
-						<% var link = "/connection?id=" + item.connection.ID %>
+						<% var link = "/connection?id=" + item.id %>
 						<form action="<%=link%>" method="Post">
 								<button type="submit">Update</button>
 						</form>
-						<% var dellink = "/delete?connectionID=" + item.connection.ID %>
+						<% var dellink = "/delete?connectionID=" + item.id %>
 						<form action="<%=dellink%>" method="POST">
 								<button type="submit">Delete</button>
 						</form>
