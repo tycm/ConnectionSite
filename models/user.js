@@ -11,7 +11,9 @@ var userSchema = new mongoose.Schema({
 	city: String,
 	state: String,
 	zip: String,
-	country: String
+	country: String,
+	username: String,
+	password: String
 });
 
 var User = mongoose.model('User', userSchema);

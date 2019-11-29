@@ -39,11 +39,6 @@ async function parseProfile(userProfile){
 async function deleteConnection(connectionID, userID){
 	connectionID = parseInt(connectionID)
 	userID = parseInt(userID)
-	console.log("connectionID " + connectionID + " type " + typeof connectionID);
-	console.log("userID " + userID + " type " + typeof userID);
-	
-    console.log(await UserConnection.find({connectionID: connectionID, userID: userID}));
-	
     await UserConnection.remove({connectionID: connectionID, userID: userID});
 }
 module.exports.getUserProfile = getUserProfile;

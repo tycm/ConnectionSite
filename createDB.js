@@ -38,8 +38,8 @@ connection6.save(function(err, connection6){
 
 var User = require('./models/User.js');
 
-var user1 = new User({id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US"});
-var user2 = new User({id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US"});
+var user1 = new User({id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "cheese"});
+var user2 = new User({id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "gnome"});
 
 user1.save(function(err, user1){
 	if(err) return console.log(err);

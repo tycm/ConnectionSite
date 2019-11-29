@@ -1,4 +1,5 @@
 const express = require('express');
+const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
@@ -23,11 +24,30 @@ router.get('/login', async function(req, res){
 	if(req.session.user){
 		res.render('index',{user: req.session.user});
 	}else{
-		var user = await UserDB.getRandomUser();
-		req.session.user = user;
-		res.redirect('/savedConnections')
+		res.render('login')
 	}
 });
+router.post('/login', urlencodedParser, [
+	check('username')
+		.isEmail()
+		.withMessage('Username must be an email address')
+], async function(req,res){
+	var errors = validationResult(req)
+	var loginuser = await UserDB.login(req.body.username, req.body.password);
+	if(!errors.isEmpty()){
+		res.render('login', {errors: errors.array()})
+	}else{
+		errors = []
+		if(loginuser instanceof User){
+			req.session.user = loginuser;
+			res.redirect('/savedconnections')
+		}else{
+			var error = {msg: "Invalid username or password"}
+			errors.push(error);
+			res.render('login', {errors: errors})
+		}
+	}
+})
 router.get('/logout', function(req,res){
 	req.session.destroy();
 	res.render('index')

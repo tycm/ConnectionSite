@@ -1,7 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var createDB = require('./createDB.js')
+// var createDB = require('./createDB.js')
 
 var app = express();
 var router = express.Router();
