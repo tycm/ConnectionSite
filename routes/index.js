@@ -1,5 +1,4 @@
 var express = require('express');
-var connectionDB = require('../util/connectionDB.js');
 
 var router = express.Router();
 
