@@ -7,8 +7,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const { check, validationResult } = require('express-validator');
 
 var UserDB = require('../util/userDB.js');
-var User = require('../models/User.js');
-var userConnection = require('../models/UserConnection.js')
 var Connection = require('../models/connection.js');
 var connectionDB = require('../util/ConnectionDB.js');
 var userConnectionDB = require('../util/userConnectionDB.js');
