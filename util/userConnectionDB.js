@@ -39,7 +39,7 @@ async function parseProfile(userProfile){
 async function deleteConnection(connectionID, userID){
 	connectionID = parseInt(connectionID)
 	userID = parseInt(userID)
-    await UserConnection.remove({connectionID: connectionID, userID: userID});
+    await UserConnection.deleteOne({connectionID: connectionID, userID: userID});
 }
 module.exports.getUserProfile = getUserProfile;
 module.exports.addRSVP = addRSVP;

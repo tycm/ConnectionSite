@@ -1,21 +1,16 @@
 <!doctype html>
 <html lang="EN">
-<head>
-	<title>Gnome Fitness - <%= connection.name %> </title>
-	<meta charset="utf-8" />
-	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
-</head>
+	<% include partials/head.ejs %>
 
 <body>
-		<% include partials/header.ejs %>
-		<% include partials/navigation.ejs %>
+	<% include partials/navigation.ejs %>
 	<main>
-		<div class="center">
+		<div class="content">
 				<h2><%= connection.name %></h2>
 				<p><small><%= connection.topic %></small></p>
-				<img class="profile" src="/assets/images/gnome.jpg" alt="Gnome man">
+				<img class="profile rounded-circle" src="/assets/images/gnome.jpg" alt="Gnome man">
 				<p><strong>Host: </strong><%= host %></p>
-				<p><strong>When: </strong><%= connection.date.toDateString() %></p>
+				<p><strong>When: </strong><%= connection.date %></p>
 				<p><strong>Where: </strong><%= connection.where %></p>
 				<p><strong>Details: </strong><%= connection.details %></p>
 				
@@ -24,21 +19,21 @@
 				<% var no = "savedConnections?connectionID=" + connection.id + "&response=No"%> 
 				<% var maybe = "savedConnections?connectionID=" + connection.id + "&response=Maybe"%> 
 				<form action="<%=yes%>" method="POST" class="zero">
-					<input type="submit" value="Yes" class="inline"></input>
+					<input type="submit" value="Yes" class="btn btn-sm btn-success"></input>
 				</form>
 				<form action="<%=no%>" method="POST" class="zero">
-					<input type="submit" value="No" class="inline"></input>
+					<input type="submit" value="No" class="btn btn-sm btn-danger"></input>
 				</form>
 				<form action="<%=maybe%>" method="POST" class="zero">
-					<input type="submit" value="Maybe" class="inline"></input>
+					<input type="submit" value="Maybe" class="btn btn-sm btn-info"></input>
 				</form>
 				<% if(typeof user != 'undefined'){ %>
 					<% if(parseInt(user.id) == parseInt(connection.host)){ %>
 						<h2>Edit</h2>
 						<% var hold = "deleteConnection?connectionID=" + connection.id%> 
 						<% var edit = "editConnection?connectionID=" + connection.id%> 
-						<a href="<%=edit%>">Edit</a>
-						<a href="<%=hold%>">Delete</a>
+						<a class="btn-sm btn btn-info"href="<%=edit%>">Edit</a>
+						<a class="btn-sm btn btn-danger"href="<%=hold%>">Delete</a>
 					<% } %>
 				<% } %>
 				

@@ -1,30 +1,26 @@
 <!doctype html>
 <html lang="EN">
 
-<head>
-	<title>Gnome Fitness</title>
-	<meta charset="utf-8" />
-	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
-</head>
+<% include partials/head.ejs %>
+
 
 <body>
-	<% include partials/header.ejs %>
 	<% include partials/navigation.ejs %>
 	<main>
-			<% include partials/errors.ejs %>
-			<form id="newconnection" method="POST">
-				<br>
-					<div>
-						<label for="username">Username</label>
-						<input type="email" name="username" id="username"/>
-					</div>
-					<br>
-					<div>
-						<label for="password">Password</label>
-						<input type="password" name="password" id="password"/>
-					</div>
-					<input type="submit" value="Login" />
-				</form>
+		<% include partials/errors.ejs %>
+		<div class="content">
+		<form method="POST">
+				<div class="form-group">
+				  <label for="username">Email address</label>
+				  <input type="email" class="form-control" id="username" placeholder="Enter email" name="username">
+				</div>
+				<div class="form-group">
+				  <label for="password">Password</label>
+				  <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+				</div>
+				<input type="submit" class="btn btn-primary" value="Login"></input>
+			  </form>
+			</div>
 	</main>
 
 	<% include partials/footer.ejs %>

@@ -45,8 +45,12 @@ async function getIDs() {
 }
 async function deleteConnection(id){
 	connectionID = parseInt(id)
-	await Connection.remove({id: connectionID});
-	await UserConnection.remove({connectionID: id})
+	return await Connection.deleteOne({id: connectionID});
+}
+async function purgeConnection(id){
+	connectionID = parseInt(id)
+	await UserConnection.deleteMany({connectionID: id})
+	return await Connection.deleteOne({id: connectionID});
 }
 async function getNextID(){
 	var ids = await getIDs();
@@ -60,3 +64,4 @@ module.exports.getConnection = getConnection;
 module.exports.getIDs = getIDs;
 module.exports.getNextID = getNextID;
 module.exports.deleteConnection = deleteConnection;
+module.exports.purgeConnection = purgeConnection;

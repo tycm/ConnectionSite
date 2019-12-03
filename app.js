@@ -7,6 +7,7 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(session({
 	secret: 'ilovebread',
 	resave: false,

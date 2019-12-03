@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="EN">
 
-<head>
-	<title>Gnome Fitness - Connections</title>
-	<meta charset="utf-8" />
-	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
-</head>
+<% include partials/head.ejs %>
 
 <body>
-	<% include partials/header.ejs %>
 	<% include partials/navigation.ejs %>
 	<main>
 		<% categories.forEach(function(cat){ %>
-			<h2><%= cat %></h2>
-			<ul>
+			<h2 class="connections white"><%= cat %></h2>
+			<div class="card-deck connections">
 				<% events.forEach(function(item){ %>
 					<% if(item.category == cat){ %>
 						<% var link = "connection" + "?id=" + item.id %>
-						<li><a href="<%= link %>"><%= item.name %></a></li>
-					<% } %>
+						<!-- <li><a href="<%= link %>"><%= item.name %></a></li> -->
+						<div class="card" style="width: 18rem;">
+							<div class="card-body">
+								<a href="<%=link%>"><h5 class="card-title"><%=item.name%></h5></a>
+								<p class="card-text"><%=item.details%></p>
+							</div>
+						</div>
+						<% } %>
 				<%	}) %>
-			</ul>
+			</div>
 		<% }) %>
 		<br>
 	</main>

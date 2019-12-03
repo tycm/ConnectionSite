@@ -1,44 +1,43 @@
 <!doctype html>
 <html lang="EN">
 
-<head>
-	<title>Gnome Fitness</title>
-	<meta charset="utf-8" />
-	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
-</head>
+<% include partials/head.ejs %>
+
 
 <body>
-		<% include partials/header.ejs %>
-		<% include partials/navigation.ejs %>
+	<% include partials/navigation.ejs %>
 	<main>
-		<% if(typeof events != 'undefined') {%> 
-		<table>
-			<tr>
-				<th>Connection</th>
-				<th>Category</th>
-				<th>Going</th>
-			</tr>
+		<% if(typeof events != 'undefined') {%>
+		<div class="content">
+			<table class="table table-striped">
+				<tr>
+					<th>Connection</th>
+					<th>Category</th>
+					<th>Going</th>
+					<th>Modify</th>
+				</tr>
 				<% events.forEach(function(item){ %>
-					<tr>
-						<td><%= item.name %></td>
-						<td><%= item.category %></td>
-						<td><%= item.rsvp %> </td>
-						<td>
+				<tr>
+					<td><%= item.name %></td>
+					<td><%= item.category %></td>
+					<td><%= item.rsvp %> </td>
+					<td>
 						<% var link = "/connection?id=" + item.id %>
-						<form action="<%=link%>" method="POST">
-								<button type="submit">Update</button>
+						<div class="btn-group"><form action="<%=link%>" method="POST">
+							<button type="submit" class="btn btn-primary btn-sm">Update</button>
 						</form>
 						<% var dellink = "/delete?connectionID=" + item.id %>
 						<form action="<%=dellink%>" method="POST">
-								<button type="submit">Delete</button>
-						</form>
-						</td>
-					</tr>
+							<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+						</form></div>
+					</td>
+				</tr>
 				<% }); %>
-		</table>
+			</table>
+		</div>
 		<%} else {%>
-			<h2>You have no saved connections</h2>
-			<% } %>
+		<h2>You have no saved connections</h2>
+		<% } %>
 	</main>
 
 	<% include partials/footer.ejs %>

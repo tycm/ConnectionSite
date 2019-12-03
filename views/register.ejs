@@ -1,77 +1,72 @@
 <!doctype html>
 <html lang="EN">
 
-<head>
-	<title>Gnome Fitness</title>
-	<meta charset="utf-8" />
-	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
-</head>
+	<% include partials/head.ejs %>
+
 
 <body>
-	<% include partials/header.ejs %>
-	<% include partials/navigation.ejs %>
+		<% include partials/navigation.ejs %>
 	<main>
-			<% include partials/errors.ejs %>
-			<form id="register" method="POST">
-					<div>
-						<br>
-						<label for="firstName">First Name</label>
-						<input type="text" name="firstName" id="firstName"/>
-					</div>
-					<br>
-					<div>
-						<label for="lastName">Last Name</label>
-						<input type="text" name="lastName" id="lastName"/>
-					</div>
-					<br>
-					<div>
-						<label for="email">Email</label>
-						<input type="email" name="email" id="email"/>
-					</div>
-					<br>
-					<div>
-						<label for="address1">Address 1</label>
-						<input type="address1" name="address1" id="address1"/>
-					</div>
-					<br>
-					<div>
-						<label for="address2">Address 2</label>
-						<input type="address2" name="address2" id="address2"/>
-					</div>
-					<br>
-					<div>
-						<label for="city">City</label>
-						<input type="city" name="city" id="city"/>
-					</div>
-					<br>
-					<div>
-						<label for="state">State</label>
-						<input type="state" name="state" id="state"/>
-					</div>
-					<br>
-					<div>
-						<label for="zip">Zip</label>
-						<input type="zip" name="zip" id="zip"/>
-					</div>
-					<br>
-					<div>
-						<label for="country">Country</label>
-						<input type="country" name="country" id="country"/>
-					</div>
-					<br>
-					<div>
-						<label for="password">Password</label>
-						<input type="password" name="password" id="password"/>
-					</div>
-					<br>
-					<div>
-						<label for="passwordConf">Confirm Password</label>
-						<input type="password" name="passwordConf" id="passwordConf"/>
-					</div>
-					<br>
-					<input type="submit" value="Sign Up" />
-				</form>
-	</main>
+			
+			<div class="content">
+					<form id="register" method="POST">
+							<% include partials/errors.ejs %>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="email">Email</label>
+									<input type="email" class="form-control" id="email" name="email"  placeholder="Email">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="password">Password</label>
+									<input type="password" class="form-control" id="password" name="password"  placeholder="Password">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="passwordConf">Confirm Passowrd</label>
+									<input type="password" class="form-control" id="passwordConf" name="passwordConf"  placeholder="Password">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="firstName">First Name</label>
+									<input type="text" class="form-control" id="firstName" name="firstName"  placeholder="First Name">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="lastName">Last Name</label>
+									<input type="text" class="form-control" id="lastName" name="lastName"  placeholder="Last Name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="address1">Address</label>
+								<input type="text" class="form-control" id="address1" name="address1"  placeholder="1234 Main St">
+							</div>
+							<div class="form-group">
+								<label for="address2">Address 2</label>
+								<input type="text" class="form-control" id="address2" name="address2"  placeholder="Apartment, studio, or floor">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="city">City</label>
+									<input type="text" class="form-control" id="city" name="city" >
+								</div>
+								<div class="form-group col-md-1">
+									<label for="state">State</label>
+									<input type="text" id="state" name="state"  class="form-control">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="country">Country</label>
+									<input type="text" id="country" name="country"  class="form-control">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="zip">Zip</label>
+									<input type="text" class="form-control" id="zip" name="zip" >
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary">Register</button>
+							</div>
+							
+						</form>
+			</main>
+			</div>
 
 	<% include partials/footer.ejs %>
 

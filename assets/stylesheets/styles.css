@@ -1,7 +1,6 @@
-body {
+body{
     font-size: 18px;
-    background-color: #3b3b3b;
-    color: #ffffff;
+    background-color: #3b3b3b !important;
 }
 
 header a:link {
@@ -54,39 +53,6 @@ h2 {
     padding: 5px;
 }
 
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #6e6767;
-}
-
-#nav li {
-    float: left;
-    border-right: 1px solid #bbbbbb;
-}
-
-#nav li:last-child {
-    border-right: none;
-}
-
-#nav li a {
-    display: block;
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111111;
-}
-
-.active {
-    background-color: #008dce;
-}
-
 .header img {
     float: left;
     width: 100px;
@@ -102,7 +68,7 @@ h2 {
 .content {
     max-width: 1080px;
     margin: auto;
-    background: #241f1f;
+    color: #ffffff !important;
 }
 
 .footer {
@@ -139,16 +105,6 @@ main {
     margin-right: auto;
     margin-left: auto;
 }
-.user li {
-    float: right;
-}
-
-ul li a{
-    color: #ffffff;
-    text-decoration: none;
-    margin-left: auto;
-    margin-right: auto;
-}
 .profile {
     width: 50px;
     height: 50px;
@@ -158,12 +114,7 @@ ul li a{
     margin-left: auto;
     margin-right: auto;
 }
-.error{
-	color: indianred;
-}
-a {
-    color: white;
-}
+
 .inline{
     display: inline;
 }
@@ -171,4 +122,14 @@ a {
     margin: 0;
     padding: 0;
     display: inline;
+}
+.connections{
+    width: 60%; 
+    margin-left: 20% !important;
+}
+.white {
+    color: white;
+}
+.card {
+    color: black;
 }
