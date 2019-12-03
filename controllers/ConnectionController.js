@@ -48,7 +48,7 @@ router.post('/newconnection', urlencodedParser,[
 ], async function(req, res){
 	const errors = validationResult(req)
 	if (!errors.isEmpty()) {
-		res.render('newConnection', {errors: errors.array()})
+		res.render('newConnection', {errors: errors.array(), user: req.session.user})
 	}else{
 	var id =Math.floor((Math.random() * 5000) + 1);
 	var newConnection = new Connection({id: id, name: req.body.name, topic: req.body.topic, date: req.body.when, category: req.body.category, host: req.session.user.id, where: req.body.where})
@@ -83,13 +83,13 @@ router.get('/connections', async function(req, res){
 	res.render('connections', {events: await connectionDB.getConnections(), categories: await connectionDB.getCategories(), user: req.session.user});
 });
 router.all('/connection', async function(req, res){
-	if(Object.keys(req.query).length === 0){
-		res.render('connections', {events: await connectionDB.getConnections(), categories: await connectionDB.getCategories(), user: req.session.user});
-	}else{
-		var connection = await connectionDB.getConnection(req.query.id);
+	var connection = await connectionDB.getConnection(req.query.id);
+	if(connection instanceof Connection){
 		var host = await UserDB.getUser(connection.host)		
-		var hostName = host.firstName + " " + host.lastName
-		res.render('connection', {connection: await connection, user: req.session.user, host: hostName})
+			var hostName = host.firstName + " " + host.lastName			
+			res.render('connection', {connection: connection, user: req.session.user, host: hostName}) 
+	}else{
+		res.redirect('/connections')
 	}
 });
 
