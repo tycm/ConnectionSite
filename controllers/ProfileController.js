@@ -27,23 +27,23 @@ router.get('/login', async function(req, res){
 router.post('/login', urlencodedParser, [
 	check('username')
 		.isEmail()
-		.withMessage('Username must be an email address')
+		.withMessage('Username must be an email address'),
+	check('username').custom((value, {req}) => {
+		return UserDB.login(value, req.body.password).then(user => {
+			if(!(user instanceof User)){
+				return Promise.reject('Invalid username or password')
+			}
+		})
+	})
 ], async function(req,res){
 	var errors = validationResult(req)
 	var loginuser = await UserDB.login(req.body.username, req.body.password);
 	if(!errors.isEmpty()){
 		res.render('login', {errors: errors.array()})
 	}else{
-		errors = []
-		if(loginuser instanceof User){
-			req.session.user = loginuser;
-			res.redirect('/savedconnections')
-		}else{
-			var error = {msg: "Invalid username or password"}
-			errors.push(error);
-			res.render('login', {errors: errors})
+		req.session.user = loginuser;
+		res.redirect('/savedconnections')
 		}
-	}
 })
 router.get('/logout', function(req,res){
 	req.session.destroy();
