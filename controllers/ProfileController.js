@@ -8,9 +8,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var UserDB = require('../util/userDB.js');
 var User = require('../models/User.js');
-var Connection = require('../models/connection.js');
-var connectionDB = require('../util/ConnectionDB.js');
-var userConnectionDB = require('../util/userConnectionDB.js');
 
 router.get('/signup', function(req, res){
 	if(req.session.user){

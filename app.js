@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 // var createDB = require('./createDB.js')
 
 var app = express();
-var router = express.Router();
 
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
