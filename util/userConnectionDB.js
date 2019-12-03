@@ -4,10 +4,7 @@ var Connection = require('../models/connection.js')
 async function getUserProfile(userID){
 	var events = []
 	events = await UserConnection.find({userID: userID});
-	
-	
 	return events;
-
 }
 async function addRSVP(connectionID, userID, rsvp){
 	if(await UserConnection.findOne({userID: userID, connectionID: connectionID})){
@@ -32,7 +29,6 @@ async function parseProfile(userProfile){
 		var currentConnection = await Connection.findOne({id: element.connectionID})
 		var hold = {name: currentConnection.name, category: currentConnection.category, rsvp: element.rsvp, id: currentConnection.id}
 		profile.push(hold);
-		
 	}
 	return profile
 }

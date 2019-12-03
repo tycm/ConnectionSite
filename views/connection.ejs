@@ -33,7 +33,9 @@
 						<% var hold = "deleteConnection?connectionID=" + connection.id%> 
 						<% var edit = "editConnection?connectionID=" + connection.id%> 
 						<a class="btn-sm btn btn-info"href="<%=edit%>">Edit</a>
-						<a class="btn-sm btn btn-danger"href="<%=hold%>">Delete</a>
+							<form action="<%=hold%>" method="POST" class="zero">
+								<input type="submit" value="Delete" class="btn btn-sm btn-danger"></input>
+							</form>
 					<% } %>
 				<% } %>
 				

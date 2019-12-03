@@ -10,7 +10,6 @@ async function getConnections(){
 	hold = await Connection.find();
 	return hold;
 }
-
 async function getConnection(id){
 	let connection;
 	try{
@@ -20,7 +19,6 @@ async function getConnection(id){
 		console.log(err);
 	}
 }
-
 async function getCategories() {
 	var categories = [];
 	var connections = await getConnections();
