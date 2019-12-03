@@ -8,27 +8,26 @@ To prevent duplicate entries please comment out line 4 in app.js
 -----------------------------------
 
 
-if you would prefer here is the mongo queries they are below
-
+Below is what I believe the mongo queries should be but for some reason it doesn"t seem to work when I do it this way.
 1. use Connections
 
-2. db.connections.insertMany([{id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('November 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD"},
-{id: 02, name: 'Gnome Marathon', topic: 'Running marathons together', date: new Date('December 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "1234 South Main St."},
-{id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('October 3, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street"},
-{id: 04, name:'Gnome Squats', topic: 'Squatting together', date: new Date('December 4, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1284 Northbend Dr."},
-{id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd."},
-{id: 06, name:'Gnome Lifts', topic: 'Lifting together', date: new Date('January 11, 2020 05:00:00'), category: "WeightLifting", host: 02, where: "1235 Luke Road"}])
+2. db.connections.insertMany([{id: "01", name: "Gnome 5K", topic: "Running together", date: new Date("November 12, 2019 05:00:00"), category: "Cardio", host: "02", where: "9201 University City BLVD"},
+{id: "02", name: "Gnome Marathon", topic: "Running marathons together", date: new Date("December 12, 2019 05:00:00"), category: "Cardio", host: "02", where: "1234 South Main St."},
+{id: "03", name: "Gnome Sprint", topic: "Sprinting together", date: new Date("October 3, 2019 05:00:00"), category: "Cardio", host: "01", where: "1294 Tryon Street"},
+{id: "04", name:"Gnome Squats", topic: "Squatting together", date: new Date("December 4, 2019 05:00:00"), category: "WeightLifting", host: "01", where: "1284 Northbend Dr."},
+{id: "05", name:"Gnome Bench", topic: "Benching marathons together", date: new Date("October 12, 2019 05:00:00"), category: "WeightLifting", host: "01", where: "1286 University City Blvd."},
+{id: "06", name:"Gnome Lifts", topic: "Lifting together", date: new Date("January 11, 2020 05:00:00"), category: "WeightLifting", host: "02", where: "1235 Luke Road"}])
 
-3. db.userconnections.insertMany([{userID: 2,connectionID: 3,rsvp: "Yes"},
-{userID: 2,connectionID: 6,rsvp: "Maybe"},
-{userID: 2,connectionID: 5,rsvp: "Yes"},
-{userID: 2,connectionID: 1,rsvp: "No"},
-{userID: 1,connectionID: 3,rsvp: "Maybe"},
-{userID: 1,connectionID: 2,rsvp: "No"},
-{userID: 1,connectionID: 1,rsvp: "Maybe"},
-{userID: 1,connectionID: 4,rsvp: "Yes"},
-{userID: 1,connectionID: 5,rsvp: "Yes"},
-{userID: 1,connectionID: 6,rsvp: "Maybe"}])
+3. db.userconnections.insertMany([{userID: "2",connectionID: "3",rsvp: "Yes"},
+{userID: "2",connectionID: "6",rsvp: "Maybe"},
+{userID: "2",connectionID: "5",rsvp: "Yes"},
+{userID: "2",connectionID: "1",rsvp: "No"},
+{userID: "1",connectionID: "3",rsvp: "Maybe"},
+{userID: "1",connectionID: "2",rsvp: "No"},
+{userID: "1",connectionID: "1",rsvp: "Maybe"},
+{userID: "1",connectionID: "4",rsvp: "Yes"},
+{userID: "1",connectionID: "5",rsvp: "Yes"},
+{userID: "1",connectionID: "6",rsvp: "Maybe"}])
 
-4. db.users.insertMany([{id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "cheese"},
-{id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "gnome"}])
+4. db.users.insertMany([{id: "01", firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "cheese"},
+{id: "02", firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "gnome"}])
