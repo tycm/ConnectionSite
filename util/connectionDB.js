@@ -28,7 +28,20 @@ async function getCategories() {
 	});
 	return categories;
 }
+async function getIDs() {
+	var IDs = [];
+	var connections = await getConnections();
+	connections.forEach(element => {
+		IDs.push(element.id)
+		IDs = IDs.filter(function(value, index, self) { 
+			return self.indexOf(value) === index;
+		});
+	});
+	return IDs;
+}
 
 module.exports.getConnections = getConnections;
 module.exports.getConnection = getConnection;
 module.exports.getCategories = getCategories;
+module.exports.getConnection = getConnection;
+module.exports.getIDs = getIDs;
