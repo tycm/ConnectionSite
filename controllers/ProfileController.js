@@ -48,6 +48,6 @@ router.post('/login', urlencodedParser, [
 router.get('/logout', function(req,res){
 	req.session.destroy();
 	res.render('index')
-})
+});
 
 module.exports = router;

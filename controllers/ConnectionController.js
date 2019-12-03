@@ -2,6 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
+Array.prototype.max = function(){
+	return Math.max.apply(null, this);
+}
+
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const { check, validationResult } = require('express-validator');
@@ -44,16 +48,18 @@ router.post('/newconnection', urlencodedParser,[
 		.withMessage("Where must be at least 5 characters long")
 		.trim()
 		.escape(),
-	check('when'),
+	check('when').exists()
+		.withMessage('Date must be populated')
 ], async function(req, res){
+	var ids = await connectionDB.getIDs();
 	const errors = validationResult(req)
 	if (!errors.isEmpty()) {
 		res.render('newConnection', {errors: errors.array(), user: req.session.user})
 	}else{
-	var id =Math.floor((Math.random() * 5000) + 1);
+	var id = ids.max() + 1;
 	var newConnection = new Connection({id: id, name: req.body.name, topic: req.body.topic, date: req.body.when, category: req.body.category, host: req.session.user.id, where: req.body.where})
 	userConnectionDB.addConnection(newConnection)
-	var host = await UserDB.getUser(newConnection.host)		
+	var host = await UserDB.getUser(newConnection.host)
 	var hostName = host.firstName + " " + host.lastName
 	res.render('connection', {connection: newConnection, user: req.session.user, host: hostName})
 	}
@@ -85,9 +91,9 @@ router.get('/connections', async function(req, res){
 router.all('/connection', async function(req, res){
 	var connection = await connectionDB.getConnection(req.query.id);
 	if(connection instanceof Connection){
-		var host = await UserDB.getUser(connection.host)		
-			var hostName = host.firstName + " " + host.lastName			
-			res.render('connection', {connection: connection, user: req.session.user, host: hostName}) 
+		var host = await UserDB.getUser(connection.host)
+			var hostName = host.firstName + " " + host.lastName
+			res.render('connection', {connection: connection, user: req.session.user, host: hostName})
 	}else{
 		res.redirect('/connections')
 	}
