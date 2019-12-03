@@ -8,7 +8,8 @@ var connectionSchema = new mongoose.Schema({
 	date: Date,
 	category: String,
 	host: String,
-	where: String
+	where: String,
+	details: String
 });
 
 var Connection = mongoose.model('Connection', connectionSchema);

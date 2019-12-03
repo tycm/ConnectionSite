@@ -12,26 +12,37 @@
 	<main>
 		<div class="center">
 				<h2><%= connection.name %></h2>
+				<p><small><%= connection.topic %></small></p>
 				<img class="profile" src="/assets/images/gnome.jpg" alt="Gnome man">
-				<p>Hosted by <%= host %></p>
-				<p><%= connection.date %></p>
-				<h3>Where</h3>
-				<p><%= connection.where %></p>
-				<h3>Details</h3>
-				<p><%= connection.topic %></p>
+				<p><strong>Host: </strong><%= host %></p>
+				<p><strong>When: </strong><%= connection.date.toDateString() %></p>
+				<p><strong>Where: </strong><%= connection.where %></p>
+				<p><strong>Details: </strong><%= connection.details %></p>
+				
 				<h3>RSVP</h3>
 				<% var yes = "savedConnections?connectionID=" + connection.id + "&response=Yes"%> 
 				<% var no = "savedConnections?connectionID=" + connection.id + "&response=No"%> 
 				<% var maybe = "savedConnections?connectionID=" + connection.id + "&response=Maybe"%> 
-				<form action="<%=yes%>" method="POST">
-					<input type="submit" value="Yes"></input>
+				<form action="<%=yes%>" method="POST" class="zero">
+					<input type="submit" value="Yes" class="inline"></input>
 				</form>
-				<form action="<%=no%>" method="POST">
-					<input type="submit" value="No"></input>
+				<form action="<%=no%>" method="POST" class="zero">
+					<input type="submit" value="No" class="inline"></input>
 				</form>
-				<form action="<%=maybe%>" method="POST">
-					<input type="submit" value="Maybe"></input>
+				<form action="<%=maybe%>" method="POST" class="zero">
+					<input type="submit" value="Maybe" class="inline"></input>
 				</form>
+				<% if(typeof user != 'undefined'){ %>
+					<% if(parseInt(user.id) == parseInt(connection.host)){ %>
+						<h2>Edit</h2>
+						<% var hold = "deleteConnection?connectionID=" + connection.id%> 
+						<% var edit = "editConnection?connectionID=" + connection.id%> 
+						<a href="<%=edit%>">Edit</a>
+						<a href="<%=hold%>">Delete</a>
+					<% } %>
+				<% } %>
+				
+				<br>
 		</div>
 	</main>
 

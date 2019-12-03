@@ -17,7 +17,6 @@
 				<th>Connection</th>
 				<th>Category</th>
 				<th>Going</th>
-				<th></th>
 			</tr>
 				<% events.forEach(function(item){ %>
 					<tr>
@@ -26,7 +25,7 @@
 						<td><%= item.rsvp %> </td>
 						<td>
 						<% var link = "/connection?id=" + item.id %>
-						<form action="<%=link%>" method="Post">
+						<form action="<%=link%>" method="POST">
 								<button type="submit">Update</button>
 						</form>
 						<% var dellink = "/delete?connectionID=" + item.id %>

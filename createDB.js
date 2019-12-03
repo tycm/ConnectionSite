@@ -8,13 +8,13 @@ console.log("\x1b[91m| comment out line 4    \x1b[39m")
 console.log("\x1b[91m| within app.js     \x1b[39m")
 console.log("\x1b[91m------------------------\x1b[39m")
 
-var connection1 = new Connection({id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('November 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD"});
-var connection2 = new Connection({id: 02, name: 'Gnome Marathon', topic: 'Running marathons together', date: new Date('December 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "1234 South Main St."});
-var connection3 = new Connection({id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('October 3, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street"});
+var connection1 = new Connection({id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('November 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD", details: "Details"});
+var connection2 = new Connection({id: 02, name: 'Gnome Marathon', topic: 'Running marathons together', date: new Date('December 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "1234 South Main St.", details: "Details"});
+var connection3 = new Connection({id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('October 3, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street", details: "Details"});
 
-var connection4 = new Connection({id: 04, name:'Gnome Squats', topic: 'Squatting together', date: new Date('December 4, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1284 Northbend Dr."});
-var connection5 = new Connection({id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd."});
-var connection6 = new Connection({id: 06, name:'Gnome Lifts', topic: 'Lifting together', date: new Date('January 11, 2020 05:00:00'), category: "WeightLifting", host: 02, where: "1235 Luke Road"});
+var connection4 = new Connection({id: 04, name:'Gnome Squats', topic: 'Squatting together', date: new Date('December 4, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1284 Northbend Dr.", details: "Details"});
+var connection5 = new Connection({id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd.", details: "Details"});
+var connection6 = new Connection({id: 06, name:'Gnome Lifts', topic: 'Lifting together', date: new Date('January 11, 2020 05:00:00'), category: "WeightLifting", host: 02, where: "1235 Luke Road", details: "Details"});
 
 connection1.save(function(err, connection1){
 	if(err) return console.log(err);
@@ -38,9 +38,13 @@ connection6.save(function(err, connection6){
 
 var User = require('./models/User.js');
 
+var user0 = new User({id: 0, firstName: "Admin", lastName: "Null", email: "admin@uncc.edu", address1: "notneeded", address2: "notneeded", city: "notneeded", state: "notneeded", zip: "notneeded", country: "notneeded", password: "admin"});
 var user1 = new User({id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "cheese"});
 var user2 = new User({id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "gnome"});
 
+user0.save(function(err, user1){
+	if(err) return console.log(err);
+});
 user1.save(function(err, user1){
 	if(err) return console.log(err);
 });

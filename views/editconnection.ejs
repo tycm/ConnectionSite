@@ -15,27 +15,27 @@
 		<form id="newconnection" method="POST">
 				<div>
 					<label for="topic">Topic</label>
-					<input type="text" name="topic" id="topic">
+					<input type="text" name="topic" id="topic" value="<%=connection.topic%>"/>
 				</div>
 				<div>
 					<label for="name">Name</label>
-					<input type="text" name="name" id="name"/>
+					<input type="text" name="name" id="name"value="<%=connection.name%>"/>
 				</div>
 				<div>
 					<label for="category">Category</label>
-					<input type="text" name="category" id="category"/>
+					<input type="text" name="category" id="category"value="<%=connection.category%>"/>
 				</div>
 				<div>
-					<label for="textarea">Details</label>
-					<input type="text" name="textarea">
+						<label for="textarea">Details</label>
+						<input type="text" name="textarea", value="<%=connection.details%>">
 				</div>
 				<div>
 					<label for="where">Where</label>
-					<input type="text" name="where" id="where"/>
+					<input type="text" name="where" id="where"value="<%=connection.where%>"/>
 				</div>
 				<div>
 					<label for="when">When</label>
-					<input type="date" name="when" id="when"/>
+					<input type="date" name="when" id="when"value="<%=connection.When%>"/>
 				</div>
 				<input type="submit" value="Create Connection" />
 			</form>

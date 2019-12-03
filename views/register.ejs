@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="EN">
+
+<head>
+	<title>Gnome Fitness</title>
+	<meta charset="utf-8" />
+	<link type="text/css" rel="stylesheet" href="/assets/stylesheets/styles.css">
+</head>
+
+<body>
+	<% include partials/header.ejs %>
+	<% include partials/navigation.ejs %>
+	<main>
+			<% include partials/errors.ejs %>
+			<form id="register" method="POST">
+					<div>
+						<br>
+						<label for="firstName">First Name</label>
+						<input type="text" name="firstName" id="firstName"/>
+					</div>
+					<br>
+					<div>
+						<label for="lastName">Last Name</label>
+						<input type="text" name="lastName" id="lastName"/>
+					</div>
+					<br>
+					<div>
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email"/>
+					</div>
+					<br>
+					<div>
+						<label for="address1">Address 1</label>
+						<input type="address1" name="address1" id="address1"/>
+					</div>
+					<br>
+					<div>
+						<label for="address2">Address 2</label>
+						<input type="address2" name="address2" id="address2"/>
+					</div>
+					<br>
+					<div>
+						<label for="city">City</label>
+						<input type="city" name="city" id="city"/>
+					</div>
+					<br>
+					<div>
+						<label for="state">State</label>
+						<input type="state" name="state" id="state"/>
+					</div>
+					<br>
+					<div>
+						<label for="zip">Zip</label>
+						<input type="zip" name="zip" id="zip"/>
+					</div>
+					<br>
+					<div>
+						<label for="country">Country</label>
+						<input type="country" name="country" id="country"/>
+					</div>
+					<br>
+					<div>
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password"/>
+					</div>
+					<br>
+					<div>
+						<label for="passwordConf">Confirm Password</label>
+						<input type="password" name="passwordConf" id="passwordConf"/>
+					</div>
+					<br>
+					<input type="submit" value="Sign Up" />
+				</form>
+	</main>
+
+	<% include partials/footer.ejs %>
+
+</body>
+
+</html>

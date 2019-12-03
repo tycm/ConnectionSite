@@ -2,10 +2,6 @@ const express = require('express');
 
 const router = express.Router();
 
-Array.prototype.max = function(){
-	return Math.max.apply(null, this);
-}
-
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const { check, validationResult } = require('express-validator');
@@ -51,13 +47,15 @@ router.post('/newconnection', urlencodedParser,[
 	check('when').exists()
 		.withMessage('Date must be populated')
 ], async function(req, res){
-	var ids = await connectionDB.getIDs();
+	if(typeof req.session.user == 'undefined'){
+		res.redirect('/login')
+		return
+	}
 	const errors = validationResult(req)
 	if (!errors.isEmpty()) {
 		res.render('newConnection', {errors: errors.array(), user: req.session.user})
 	}else{
-	var id = ids.max() + 1;
-	var newConnection = new Connection({id: id, name: req.body.name, topic: req.body.topic, date: req.body.when, category: req.body.category, host: req.session.user.id, where: req.body.where})
+	var newConnection = new Connection({id: await connectionDB.getNextID(), name: req.body.name, topic: req.body.topic, date: req.body.when, category: req.body.category, host: req.session.user.id, where: req.body.where})
 	userConnectionDB.addConnection(newConnection)
 	var host = await UserDB.getUser(newConnection.host)
 	var hostName = host.firstName + " " + host.lastName
@@ -85,6 +83,27 @@ router.post('/delete', async function(req,res){
 	userConnectionDB.deleteConnection(req.query.connectionID, req.session.user.id);
 	res.redirect('/savedConnections')
 })
+router.post('/deleteConnection', async function(req,res){
+	var connection = await connectionDB.getConnection(req.query.connectionID)
+	if(typeof req.session.user == 'undefined'){
+		res.redirect('/login')
+	}else if(req.session.user.id == connection.host){
+		connectionDB.deleteConnection(req.query.connectionID);
+		res.redirect('/connections')
+	}else{
+		res.sendStatus(403)
+	}
+})
+router.get('/editConnection', async function(req,res){
+	var connection = await connectionDB.getConnection(req.query.connectionID)
+	if(typeof req.session.user == 'undefined'){
+		res.redirect('/login')
+	}else if(req.session.user.id == connection.host){
+		res.render('editconnection', {user: req.session.user, connection: connection})
+	}else{
+		res.sendStatus(403)
+	}
+})
 router.get('/connections', async function(req, res){
 	res.render('connections', {events: await connectionDB.getConnections(), categories: await connectionDB.getCategories(), user: req.session.user});
 });
@@ -98,5 +117,4 @@ router.all('/connection', async function(req, res){
 		res.redirect('/connections')
 	}
 });
-
 module.exports = router;

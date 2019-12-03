@@ -5,14 +5,13 @@ var userSchema = new mongoose.Schema({
 	id: {type: String, required: true},
 	firstName: {type: String, required: true},
 	lastName: {type: String, required: true},
-	email: String,
+	email: {type: String, required: true},
 	address1: String,
 	address2: String,
 	city: String,
 	state: String,
 	zip: String,
 	country: String,
-	username: String,
 	password: String
 });
 

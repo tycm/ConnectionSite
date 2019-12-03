@@ -161,3 +161,14 @@ ul li a{
 .error{
 	color: indianred;
 }
+a {
+    color: white;
+}
+.inline{
+    display: inline;
+}
+.zero{
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
