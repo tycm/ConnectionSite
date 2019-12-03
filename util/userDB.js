@@ -9,9 +9,6 @@ async function getUser(userID){
 async function getUserByEmail(email){
 	return User.findOne({email: email});
 }
-async function getUserByUsername(username){
-	return User.findOne({username: username});
-}
 async function login(username, password){
 	return User.findOne({email: username, password: password});
 }
