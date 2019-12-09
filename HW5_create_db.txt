@@ -4,7 +4,7 @@ To create the database and populate all of the neccecary fields there is a file 
 
 
 -----------------------------------
-To prevent duplicate entries please comment out line 4 in app.js
+To prevent duplicate entries please comment out line 7 in app.js
 -----------------------------------
 
 

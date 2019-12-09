@@ -8,12 +8,11 @@
 	<main>
 		<% categories.forEach(function(cat){ %>
 			<h2 class="connections white"><%= cat %></h2>
-			<div class="card-deck connections">
+			<div class="connections flexbox">
 				<% events.forEach(function(item){ %>
 					<% if(item.category == cat){ %>
 						<% var link = "connection" + "?id=" + item.id %>
-						<!-- <li><a href="<%= link %>"><%= item.name %></a></li> -->
-						<div class="card" style="width: 18rem;">
+						<div class="card mr-3 mb-3 ml-3 flex">
 							<div class="card-body">
 								<a href="<%=link%>"><h5 class="card-title"><%=item.name%></h5></a>
 								<p class="card-text"><%=item.details%></p>

@@ -1,6 +1,9 @@
 var express = require('express');
 var session = require('express-session');
-var mongoose = require('mongoose');
+var favicon = require('serve-favicon');
+/////////////////////////////////////////////
+//   Make sure to comment the line below ///
+/////////////////////////////////////////////
 // var createDB = require('./createDB.js')
 
 var app = express();
@@ -8,6 +11,7 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(favicon(__dirname + '/assets/images/favicon.ico'));
 app.use(session({
 	secret: 'ilovebread',
 	resave: false,

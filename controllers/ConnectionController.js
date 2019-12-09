@@ -3,13 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 var bodyParser = require("body-parser");
-var urlencodedParser = bodyParser.urlencoded({
-	extended: false
-});
-const {
-	check,
-	validationResult
-} = require('express-validator');
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+const {check,validationResult} = require('express-validator');
 
 var UserDB = require('../util/userDB.js');
 var Connection = require('../models/connection.js');
@@ -17,52 +12,34 @@ var connectionDB = require('../util/ConnectionDB.js');
 var userConnectionDB = require('../util/userConnectionDB.js');
 var connectionValidation = [
 	check('topic')
-	.isLength({
-		min: 3
-	})
-	.withMessage("Topic must be at least 3 characters long")
-	.trim(),
+		.isLength({min: 3})
+		.withMessage("Topic must be at least 3 characters long")
+		.trim(),
 	check('name')
-	.isLength({
-		min: 3
-	})
-	.withMessage("Name must be at least 3 characters long")
-	.trim(),
+		.isLength({min: 3})
+		.withMessage("Name must be at least 3 characters long")
+		.trim(),
 	check('category')
-	.isLength({
-		min: 3
-	})
-	.withMessage("Category must be at least 3 characters long")
-	.trim(),
+		.isLength({min: 3})
+		.withMessage("Category must be at least 3 characters long")
+		.trim(),
 	check('details')
-	.isLength({
-		min: 3
-	})
-	.withMessage("Details must be at least 3 characters long")
-	.trim(),
+		.isLength({min: 3})
+		.withMessage("Details must be at least 3 characters long")
+		.trim(),
 	check('where')
-	.isLength({
-		min: 5
-	})
-	.withMessage("Where must be at least 5 characters long")
-	.trim(),
+		.isLength({min: 5})
+		.withMessage("Where must be at least 5 characters long")
+		.trim(),
 	check('when')
-	.exists()
-	.custom(value => {
-		if (value.length < 2) {
-			throw new Error('Invalid date')
-		}
-		return true;
-	})
-	.withMessage('Invalid date')
+		.exists()
+		.isAfter(new Date().toLocaleDateString())
+		.withMessage('Invalid date')
 ];
 
 router.get('/newconnection', function (req, res) {
 	if (req.session.user) {
-		res.render('updateConnection', {
-			user: req.session.user,
-			connection: new Connection()
-		});
+		res.render('updateConnection', {user: req.session.user, connection: new Connection()});
 	} else {
 		res.redirect('/login')
 	}
@@ -75,11 +52,7 @@ router.post('/newconnection', urlencodedParser, connectionValidation, async func
 	const errors = validationResult(req)
 
 	if (!errors.isEmpty()) {
-		res.render('updateConnection', {
-			errors: errors.array(),
-			user: req.session.user,
-			connection: new Connection()
-		})
+		res.render('updateConnection', {errors: errors.array(), user: req.session.user, connection: new Connection()})
 	} else {
 		var newConnection = new Connection({
 			id: await connectionDB.getNextID(),

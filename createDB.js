@@ -1,13 +1,17 @@
-var Connection = require('./models/connection.js')
+var Connection = require('./models/connection.js');
+var UserConnection = require('./models/UserConnection');
+var User = require('./models/User.js');
+var bcrypt = require('bcryptjs')
 
 console.log("\x1b[91m------------------------\x1b[39m")
 console.log("\x1b[91m| Creating The Database!!!\x1b[39m")
 console.log("\x1b[91m|					 \x1b[39m")
 console.log("\x1b[91m| Please make sure to   \x1b[39m")
-console.log("\x1b[91m| comment out line 4    \x1b[39m")
+console.log("\x1b[91m| comment out line 7    \x1b[39m")
 console.log("\x1b[91m| within app.js     \x1b[39m")
 console.log("\x1b[91m------------------------\x1b[39m")
 
+//Creating connections
 var connection1 = new Connection({id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('November 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD", details: "A whole 5k make sure you're prepared"});
 var connection2 = new Connection({id: 02, name: 'Gnome Marathon', topic: 'Running marathons together', date: new Date('December 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "1234 South Main St.", details: "A whole marathon 26.2 miles!"});
 var connection3 = new Connection({id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('October 3, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street", details: "Just some sprinting around the track"});
@@ -16,46 +20,30 @@ var connection4 = new Connection({id: 04, name:'Gnome Squats', topic: 'Squatting
 var connection5 = new Connection({id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd.", details: "Bench pressing."});
 var connection6 = new Connection({id: 06, name:'Gnome Lifts', topic: 'Lifting together', date: new Date('January 11, 2020 05:00:00'), category: "WeightLifting", host: 02, where: "1235 Luke Road", details: "General free weight lifting"});
 
-connection1.save(function(err, connection1){
-	if(err) return console.log(err);
-})
-connection2.save(function(err, connection2){
-	if(err) return console.log(err);
-})
-connection3.save(function(err, connection3){
-	if(err) return console.log(err);
-})
-connection4.save(function(err, connection4){
-	if(err) return console.log(err);
-})
-connection5.save(function(err, connection5){
-	if(err) return console.log(err);
-})
-connection6.save(function(err, connection6){
-	if(err) return console.log(err);
-})
+//Saving created connections to database
+connection1.save()
+connection2.save()
+connection3.save()
+connection4.save()
+connection5.save()
+connection6.save()
 
+//Hashing passwords
+user0pass = bcrypt.hashSync("admin",8)
+user1pass = bcrypt.hashSync("cheese",8)
+user2pass = bcrypt.hashSync("gnome",8)
 
-var User = require('./models/User.js');
+//creating users
+var user0 = new User({id: 0, firstName: "Admin", lastName: "Null", email: "admin@uncc.edu", address1: "notneeded", address2: "notneeded", city: "notneeded", state: "notneeded", zip: "notneeded", country: "notneeded", password: user0pass});
+var user1 = new User({id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: user1pass});
+var user2 = new User({id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: user2pass});
 
-var user0 = new User({id: 0, firstName: "Admin", lastName: "Null", email: "admin@uncc.edu", address1: "notneeded", address2: "notneeded", city: "notneeded", state: "notneeded", zip: "notneeded", country: "notneeded", password: "admin"});
-var user1 = new User({id: 01, firstName: "Tim", lastName: "McCrickard", email: "tmccrick@uncc.edu", address1: "9201 University City BLVD", address2: "Wallis Hall", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "cheese"});
-var user2 = new User({id: 02, firstName: "Gnome", lastName: "Man", email: "gman@uncc.edu", address1: "9201 University City BLVD", address2: "Student Union", city: "Charlotte", state: "NC", zip: "28223", country: "US", password: "gnome"});
+//Saving created users to database
+user0.save();
+user1.save();
+user2.save();
 
-user0.save(function(err, user1){
-	if(err) return console.log(err);
-});
-user1.save(function(err, user1){
-	if(err) return console.log(err);
-});
-user2.save(function(err, user2){
-	if(err) return console.log(err);
-});
-
-
-
-var UserConnection = require('./models/UserConnection');
-
+//creating the userconnections for the users profiles
 var userConnection1 = new UserConnection({userID: 2,connectionID: 3,rsvp: "Yes"});
 var userConnection2 = new UserConnection({userID: 2,connectionID: 6,rsvp: "Maybe"});
 var userConnection3 = new UserConnection({userID: 2,connectionID: 5,rsvp: "Yes"});
@@ -67,33 +55,14 @@ var userConnection8 = new UserConnection({userID: 1,connectionID: 4,rsvp: "Yes"}
 var userConnection9 = new UserConnection({userID: 1,connectionID: 5,rsvp: "Yes"});
 var userConnection10 = new UserConnection({userID: 1,connectionID: 6,rsvp: "Maybe"});
 
-userConnection1.save(function(err, userConnection1){
-	if(err) return console.log(err);
-});
-userConnection2.save(function(err, userConnection2){
-	if(err) return console.log(err);
-});
-userConnection3.save(function(err, userConnection3){
-	if(err) return console.log(err);
-});
-userConnection4.save(function(err, userConnection4){
-	if(err) return console.log(err);
-});
-userConnection5.save(function(err, userConnection5){
-	if(err) return console.log(err);
-});
-userConnection6.save(function(err, userConnection6){
-	if(err) return console.log(err);
-});
-userConnection7.save(function(err, userConnection7){
-	if(err) return console.log(err);
-});
-userConnection8.save(function(err, userConnection8){
-	if(err) return console.log(err);
-});
-userConnection9.save(function(err, userConnection9){
-	if(err) return console.log(err);
-});
-userConnection10.save(function(err, userConnection10){
-	if(err) return console.log(err);
-});
+//Saving created userconnections to database
+userConnection1.save();
+userConnection2.save();
+userConnection3.save();
+userConnection4.save();
+userConnection5.save();
+userConnection6.save();
+userConnection7.save();
+userConnection8.save();
+userConnection9.save();
+userConnection10.save();

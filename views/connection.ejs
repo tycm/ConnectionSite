@@ -10,7 +10,7 @@
 				<p><small><%= connection.topic %></small></p>
 				<img class="profile rounded-circle" src="/assets/images/gnome.jpg" alt="Gnome man">
 				<p><strong>Host: </strong><%= host %></p>
-				<p><strong>When: </strong><%= connection.date %></p>
+				<p><strong>When: </strong><%= connection.date.toLocaleDateString() %></p>
 				<p><strong>Where: </strong><%= connection.where %></p>
 				<p><strong>Details: </strong><%= connection.details %></p>
 				
@@ -33,9 +33,9 @@
 						<% var hold = "deleteConnection?connectionID=" + connection.id%> 
 						<% var edit = "editConnection?connectionID=" + connection.id%> 
 						<a class="btn-sm btn btn-info"href="<%=edit%>">Edit</a>
-							<form action="<%=hold%>" method="POST" class="zero">
-								<input type="submit" value="Delete" class="btn btn-sm btn-danger"></input>
-							</form>
+						<form action="<%=hold%>" method="POST" class="zero">
+							<input type="submit" value="Delete" class="btn btn-sm btn-danger"></input>
+						</form>
 					<% } %>
 				<% } %>
 				
