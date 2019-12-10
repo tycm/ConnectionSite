@@ -52,6 +52,9 @@ async function purgeConnection(id){
 }
 async function getNextID(){
 	var ids = await getIDs();
+	if(ids.length == 0){
+		return 0
+	}
 	return ids.max() + 1;
 }
 

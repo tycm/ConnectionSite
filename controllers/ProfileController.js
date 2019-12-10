@@ -10,15 +10,6 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 var UserDB = require('../util/userDB.js');
 var User = require('../models/User.js');
 
-router.get('/signup', function (req, res) {
-	if (req.session.user) {
-		res.render('index', {user: req.session.user});
-	} else {
-		// req.session.user = UserDB.getRandomUser();
-		// res.render("savedConnections",{user: req.session.user})
-		res.redirect('/register')
-	}
-})
 router.get('/register', async function (req, res) {
 	if (req.session.user) {
 		res.redirect('/')

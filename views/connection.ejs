@@ -10,7 +10,7 @@
 				<p><small><%= connection.topic %></small></p>
 				<img class="profile rounded-circle" src="/assets/images/gnome.jpg" alt="Gnome man">
 				<p><strong>Host: </strong><%= host %></p>
-				<p><strong>When: </strong><%= connection.date.toLocaleDateString() %></p>
+				<p><strong>When: </strong><%= connection.date.toGMTString() %></p>
 				<p><strong>Where: </strong><%= connection.where %></p>
 				<p><strong>Details: </strong><%= connection.details %></p>
 				
@@ -19,22 +19,22 @@
 				<% var no = "savedConnections?connectionID=" + connection.id + "&response=No"%> 
 				<% var maybe = "savedConnections?connectionID=" + connection.id + "&response=Maybe"%> 
 				<form action="<%=yes%>" method="POST" class="zero">
-					<input type="submit" value="Yes" class="btn btn-sm btn-success"></input>
+					<input type="submit" value="Yes" class="btn btn-sm btn-success">
 				</form>
 				<form action="<%=no%>" method="POST" class="zero">
-					<input type="submit" value="No" class="btn btn-sm btn-danger"></input>
+					<input type="submit" value="No" class="btn btn-sm btn-danger">
 				</form>
 				<form action="<%=maybe%>" method="POST" class="zero">
-					<input type="submit" value="Maybe" class="btn btn-sm btn-info"></input>
+					<input type="submit" value="Maybe" class="btn btn-sm btn-info">
 				</form>
 				<% if(typeof user != 'undefined'){ %>
 					<% if(parseInt(user.id) == parseInt(connection.host)){ %>
 						<h2>Edit</h2>
 						<% var hold = "deleteConnection?connectionID=" + connection.id%> 
 						<% var edit = "editConnection?connectionID=" + connection.id%> 
-						<a class="btn-sm btn btn-info"href="<%=edit%>">Edit</a>
+						<a class="btn-sm btn btn-info" href="<%=edit%>">Edit</a>
 						<form action="<%=hold%>" method="POST" class="zero">
-							<input type="submit" value="Delete" class="btn btn-sm btn-danger"></input>
+							<input type="submit" value="Delete" class="btn btn-sm btn-danger">
 						</form>
 					<% } %>
 				<% } %>

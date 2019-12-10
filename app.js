@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 /////////////////////////////////////////////
 //   Make sure to comment the line below ///
 /////////////////////////////////////////////
-// var createDB = require('./createDB.js')
+var createDB = require('./createDB.js')
 
 var app = express();
 
@@ -26,7 +26,8 @@ app.use('/', index);
 app.use('/', ProfileController);
 app.use('/', ConnectionController);
 app.get('/*', function(req,res){
-	res.send("404 Not found");
+	res.status(404)
+	res.render('404', {user: req.session.user})
 })
 
 

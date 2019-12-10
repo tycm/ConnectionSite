@@ -12,12 +12,12 @@ console.log("\x1b[91m| within app.js     \x1b[39m")
 console.log("\x1b[91m------------------------\x1b[39m")
 
 //Creating connections
-var connection1 = new Connection({id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('November 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD", details: "A whole 5k make sure you're prepared"});
+var connection1 = new Connection({id: 01, name: 'Gnome 5K', topic: 'Running together', date: new Date('January 12, 2020 05:00:00'), category: "Cardio", host: 02, where: "9201 University City BLVD", details: "A whole 5k make sure you're prepared"});
 var connection2 = new Connection({id: 02, name: 'Gnome Marathon', topic: 'Running marathons together', date: new Date('December 12, 2019 05:00:00'), category: "Cardio", host: 02, where: "1234 South Main St.", details: "A whole marathon 26.2 miles!"});
-var connection3 = new Connection({id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('October 3, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street", details: "Just some sprinting around the track"});
+var connection3 = new Connection({id: 03, name: 'Gnome Sprint', topic: 'Sprinting together', date: new Date('December 21, 2019 05:00:00'), category: "Cardio", host: 01, where: "1294 Tryon Street", details: "Just some sprinting around the track"});
 
-var connection4 = new Connection({id: 04, name:'Gnome Squats', topic: 'Squatting together', date: new Date('December 4, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1284 Northbend Dr.", details: "Squats, make sure to stretch your knees"});
-var connection5 = new Connection({id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd.", details: "Bench pressing."});
+var connection4 = new Connection({id: 04, name:'Gnome Squats', topic: 'Squatting together', date: new Date('December 18, 2019 05:00:00'), category: "WeightLifting", host: 01, where: "1284 Northbend Dr.", details: "Squats, make sure to stretch your knees"});
+var connection5 = new Connection({id: 05, name:'Gnome Bench', topic: 'Benching marathons together', date: new Date('October 12, 2020 05:00:00'), category: "WeightLifting", host: 01, where: "1286 University City Blvd.", details: "Bench pressing."});
 var connection6 = new Connection({id: 06, name:'Gnome Lifts', topic: 'Lifting together', date: new Date('January 11, 2020 05:00:00'), category: "WeightLifting", host: 02, where: "1235 Luke Road", details: "General free weight lifting"});
 
 //Saving created connections to database

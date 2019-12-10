@@ -54,6 +54,8 @@ router.post('/newconnection', urlencodedParser, connectionValidation, async func
 	if (!errors.isEmpty()) {
 		res.render('updateConnection', {errors: errors.array(), user: req.session.user, connection: new Connection()})
 	} else {
+		console.log(await connectionDB.getNextID());
+		
 		var newConnection = new Connection({
 			id: await connectionDB.getNextID(),
 			name: req.body.name,
@@ -107,7 +109,8 @@ router.post('/deleteConnection', async function (req, res) {
 		connectionDB.purgeConnection(req.query.connectionID);
 		res.redirect('/connections')
 	} else {
-		res.sendStatus(403)
+		res.status(403)
+		res.render('403', {user: req.session.user});
 	}
 })
 router.get('/editConnection', async function (req, res) {
@@ -115,12 +118,10 @@ router.get('/editConnection', async function (req, res) {
 	if (typeof req.session.user == 'undefined') {
 		res.redirect('/login')
 	} else if (req.session.user.id == connection.host) {
-		res.render('updateConnection', {
-			user: req.session.user,
-			connection: connection
-		})
+		res.render('updateConnection', {user: req.session.user, connection: connection})
 	} else {
-		res.sendStatus(403)
+		res.status(403)
+		res.render('403', {user: req.session.user})
 	}
 })
 router.post('/editConnection', urlencodedParser, connectionValidation, async function (req, res) {
@@ -159,7 +160,8 @@ router.post('/editConnection', urlencodedParser, connectionValidation, async fun
 			})
 		}
 	} else {
-		res.sendStatus(403)
+		res.status(403)
+		res.render('403', {user: req.session.user})
 	}
 });
 router.get('/connections', async function (req, res) {
